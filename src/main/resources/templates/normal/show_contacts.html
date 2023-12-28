@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base.html::Layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Show Contacts</title>
+</head>
+
+<body>
+	<section>
+		<div class="card mr-3 ml-3">
+			<div class="card-body">
+				<h1 class="text-center"><i class="fa-solid fa-address-book"></i> Your Contacts</h1>
+				<table class="table mt-4">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">First Name</th>
+							<th scope="col">Last Name</th>
+							<th scope="col">Email</th>
+							<th scope="col">Phone</th>
+							<th scope="col">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="c : ${contacts}">
+							<th scope="row" th:text="${c.contactID}">1</th>
+							<td th:text="${c.first_name}">Mark</td>
+							<td th:text="${c.last_name}">Otto</td>
+							<td th:text="${c.email}">@mdo</td>
+							<td th:text="${c.phone}">@mdo</td>
+							<td>
+								
+								<a th:href="@{'/user/delete/'+${c.contactID}}" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
+								<a class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+								
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+</body>
+
+</html>

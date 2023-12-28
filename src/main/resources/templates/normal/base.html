@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="Layout(content)">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap demo</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+	integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+
+<body>
+
+	<!-- This is navbar -->
+	<nav class="fixed-top navbar navbar-expand-lg bg-body-tertiary bg-primary">
+		<div class="container-fluid">
+			<a class="navbar-brand">SmartContactManager</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav text-uppercase">
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" th:href="@{/home}">Home</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" aria-disabled="true"><span th:text="${user.first_name}"></span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/logout}" aria-disabled="true">Logout</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- End NavBar -->
+
+	<!-- SideBar -->
+
+	<div class="sidebar mt-2">
+
+		<span onclick="toggleSidebar()" class="crossBtn">&times;</span>
+		<a th:href="@{/user/index}" class="item"><i class="fa-solid fa-house"></i> Home</a>
+		<a th:href="@{/user/show-contacts}" class="item"><i class="fa-solid fa-address-book"></i> View Contacts</a>
+		<a th:href="@{/user/add-contact}" class="item"><i class="fa-regular fa-id-badge"></i> Add Contact</a>
+		<a href="#" class="item"><i class="fa-solid fa-user"></i> View Profile</a>
+		<a href="#" class="item"><i class="fa-solid fa-gear"></i> Settings</a>
+		<a th:href="@{/logout}" class="item"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+		<div class="divider"></div>
+
+	</div>
+
+
+	<!-- End SideBar -->
+
+
+	<div class="content mt-5">
+
+		<!-- Content area -->
+		<i onclick="toggleSidebar()" class="fa-solid fa-bars mt-4" style="font-size: 27px;"></i>
+		<div th:replace="${content}"></div>
+
+		<!-- End Content area -->
+
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script th:src="@{/javscript/script.js}"></script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base.html::Layout(~{::section})}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<section class="form-section">
+		<div class="form-section1">
+			<form novalidate class="row" th:action="@{/do_register}" method="post" th:object="${user}">
+				<div class="col-md-12 mb-3">
+					<h1>SIGNUP HERE !!</h1>
+				</div>
+				<div class="col-md-6 mb-3">
+					<label for="formGroupExampleInput" class="form-label">Email</label>
+					<input name="email" type="email" class="form-control" id="formGroupExampleInput"
+						placeholder="Enter your Email" th:value="${user.email}"
+						th:classappend="${#fields.hasErrors('email')?'is-invalid':''}">
+					<div id="validationServerFeedback" class="invalid-feedback" th:each="e:${#fields.errors('email')}"
+						th:text="${e}">
+					</div>
+				</div>
+
+				<div class="col-md-6 mb-3">
+					<label for="formGroupExampleInput2" class="form-label">Password</label>
+					<input name="password" type="password" class="form-control" th:value="${user.password}"
+						id="formGroupExampleInput2" placeholder="Enter your Password">
+				</div>
+				<div class="col-md-6 mb-3">
+					<label for="formGroupExampleInput2" class="form-label">First Name</label>
+					<input name="first_name" type="text" class="form-control" th:value="${user.first_name}"
+						id="formGroupExampleInput2" placeholder="Enter First Name"
+						th:classappend="${#fields.hasErrors('first_name')?'is-invalid':''}">
+					<div id="validationServerFeedback1" class="invalid-feedback"
+						th:each="e:${#fields.errors('first_name')}" th:text="${e}">
+					</div>
+				</div>
+				<div class="col-md-6 mb-3">
+					<label for="formGroupExampleInput2" class="form-label">Last Name</label>
+					<input name="last_name" type="text" class="form-control" th:value="${user.last_name}"
+						id="formGroupExampleInput2" placeholder="Enter Last Name"
+						th:classappend="${#fields.hasErrors('last_name')?'is-invalid':''}">
+					<div id="validationServerFeedback2" class="invalid-feedback"
+						th:each="e:${#fields.errors('last_name')}" th:text="${e}">
+					</div>
+				</div>
+				<div class="col-md-19 mb-3">
+					<textarea name="about" placeholder="Enter something about yourself" th:text="${user.about}"
+						rows="10" class="form-control"></textarea>
+				</div>
+
+				<div class="col-md-3">
+					<button type="submit" class="btn bg-primary test-white">Sign Up</button>
+				</div>
+				<div class="col-md-2">
+					<button type="reset" class="btn btn-warning">reset</button>
+				</div>
+			</form>
+		</div>
+	</section>
+</body>
+
+</html>
